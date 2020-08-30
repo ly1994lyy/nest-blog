@@ -3,12 +3,28 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
 import { CategoriesModule } from './categories/categories.module';
-import { DbModule } from 'libs/db';
 import { FriendlinkModule } from './friendlink/friendlink.module';
 import { UserModule } from './user/user.module';
+import { OtherModule } from './other/other.module';
+import { AboutModule } from './about/about.module';
+import { LoginModule } from './login/login.module';
+import { CommonModule } from '@app/common';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
-  imports: [ArticlesModule, CategoriesModule,DbModule, FriendlinkModule, UserModule],
+  imports: [
+    CommonModule, 
+    ArticlesModule,
+    CategoriesModule, 
+    FriendlinkModule, 
+    UserModule, 
+    OtherModule, 
+    AboutModule,
+    LoginModule,
+    MulterModule.register({
+      dest:'uploads'
+    })
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

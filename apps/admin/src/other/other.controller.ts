@@ -1,20 +1,20 @@
 import { Controller, UseGuards } from '@nestjs/common';
 import { Crud } from 'nestjs-mongoose-crud';
-import { Article } from 'libs/db/models/article.model';
+import { Other } from 'libs/db/models/other.model';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('articles')
+@Controller('other')
 @Crud({
-    model:Article
+    model:Other
 })
-@UseGuards(AuthGuard('jwt'))
+@ApiTags('其他')
 @ApiBearerAuth()
-@ApiTags('文章')
-export class ArticlesController {
+@UseGuards(AuthGuard('jwt'))
+export class OtherController {
     constructor(
-        @InjectModel(Article) private model:ReturnModelType<typeof Article>
+        @InjectModel(Other) private model:ReturnModelType<typeof Other>
     ){}
 }

@@ -2,7 +2,7 @@ import { prop } from "@typegoose/typegoose";
 import {hashSync} from 'bcrypt'
 import { ApiProperty } from "@nestjs/swagger";
 
-export class User{
+export class AdminUser{
     @ApiProperty({title:'用户名'})
     @prop()
     username:string
