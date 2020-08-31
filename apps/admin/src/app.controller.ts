@@ -14,6 +14,7 @@ export class AppController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   async upload(@UploadedFile('file') file):Promise<any>{
-    return `http://localhost:3008/uploads/${file.filename}`
+    file.url = `http://localhost:3008/uploads/${file.filename}`
+    return file
   }
 }

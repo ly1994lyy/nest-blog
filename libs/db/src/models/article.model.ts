@@ -3,7 +3,10 @@ import { Category } from './category.model'
 
 @modelOptions({
     schemaOptions:{
-        timestamps:true
+        timestamps:{
+            createdAt:'created',
+            updatedAt:'updated'
+        }
     }
 })
 
@@ -17,6 +20,6 @@ export class Article {
     @prop()
     body:string
 
-    @prop()
+    @prop({default:false})
     isHot:boolean
 }
