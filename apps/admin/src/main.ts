@@ -10,6 +10,9 @@ async function bootstrap() {
   app.useStaticAssets('uploads',{
     prefix:'/uploads'
   })
+  app.useStaticAssets('public/admin',{
+    prefix:'/admin'
+  })
   const options = new DocumentBuilder()
     .setTitle('NestJs博客API')
     .setDescription('基于Nest的博客接口')
@@ -19,7 +22,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('admin-docs', app, document);
   
-  await app.listen(process.env.ADMIN_PORT);
+  await app.listen(process.env.ADMIN_PORT || 3008);
   app.useGlobalPipes(new ValidationPipe())
 }
 bootstrap();

@@ -10,6 +10,7 @@ async function bootstrap() {
   app.useStaticAssets('uploads',{
     prefix:'/uploads'
   })
+  app.useStaticAssets('public/web')
   const options = new DocumentBuilder()
     .setTitle('NestJs博客展示端API')
     .setDescription('基于Nest的博客接口')
@@ -19,7 +20,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('web-docs', app, document);
   
-  await app.listen(process.env.WEB_PORT);
+  await app.listen(process.env.WEB_PORT || 3009);
   app.useGlobalPipes(new ValidationPipe())
 }
 bootstrap();

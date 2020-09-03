@@ -18,6 +18,9 @@ export class Article {
     categories:Ref<Category>[]
 
     @prop()
+    img:string
+
+    @prop()
     body:string
 
     @prop({default:false})

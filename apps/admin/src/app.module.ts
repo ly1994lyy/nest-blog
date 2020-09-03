@@ -23,7 +23,7 @@ import { MulterModule } from '@nestjs/platform-express';
     LoginModule,
     MulterModule.register({
       dest:'uploads'
-    })
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

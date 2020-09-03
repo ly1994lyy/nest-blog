@@ -1,4 +1,14 @@
-import { prop } from "@typegoose/typegoose";
+import { prop, modelOptions, Ref } from "@typegoose/typegoose";
+import { Article } from "./article.model";
+
+@modelOptions({
+    schemaOptions:{
+        toJSON:{
+            virtuals:true
+        }
+    }
+})
+
 
 export class Category{
     @prop()
@@ -9,4 +19,11 @@ export class Category{
 
     @prop()
     color:string
+
+    @prop({
+        ref:'Article',
+        localField:'_id',
+        foreignField:'categories'
+    })
+    articles:Ref<Article>[]
 }
